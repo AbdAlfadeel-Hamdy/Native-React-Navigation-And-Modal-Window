@@ -1,4 +1,4 @@
-import Link from "../Link";
+import Link from "../components/Link";
 
 const Nav = () => {
   return (
@@ -7,6 +7,7 @@ const Nav = () => {
         <Link href="/">home</Link>
         <Link href="/about">about</Link>
         <Link href="/portals">portals</Link>
+        <Link href="/table">Table</Link>
       </ul>
     </nav>
   );

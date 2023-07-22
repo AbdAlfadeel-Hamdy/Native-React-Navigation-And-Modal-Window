@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import NavigationContext from "./navigationContext";
+import NavigationContext from "../context/navigationContext";
 
 const Link = ({ children, href }: { children: string; href: string }) => {
   const { handleNavigation } = useContext(NavigationContext);
