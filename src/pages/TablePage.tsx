@@ -1,6 +1,4 @@
-import Table from "../components/Table";
-
-import { TableConfig } from "../components/Table";
+import SortableTable, { SortableTableConfig } from "./SortableTable";
 
 export interface TableData {
   name: string;
@@ -15,10 +13,11 @@ const TablePage = () => {
     { name: "Banana", color: "bg-yellow-500", score: 7 },
     { name: "Lime", color: "bg-green-500", score: 4 },
   ];
-  const config: TableConfig[] = [
+  const config: SortableTableConfig[] = [
     {
       label: "Name",
       render: (fruit: TableData) => fruit.name,
+      sortValue: (fruit: TableData) => fruit.name,
     },
     {
       label: "Color",
@@ -26,12 +25,16 @@ const TablePage = () => {
         <div className={`p-3 m-2 ${fruit.color}`}></div>
       ),
     },
-    { label: "Score", render: (fruit: TableData) => fruit.score },
+    {
+      label: "Score",
+      render: (fruit: TableData) => fruit.score,
+      sortValue: (fruit: TableData) => fruit.score,
+    },
   ];
   const keyFn = (fruit: TableData) => fruit.name;
   return (
     <div>
-      <Table data={data} config={config} keyFn={keyFn} />
+      <SortableTable data={data} config={config} keyFn={keyFn} />
     </div>
   );
 };

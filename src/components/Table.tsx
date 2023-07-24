@@ -1,18 +1,24 @@
+import { Fragment } from "react";
+
 export interface TableConfig {
   label: string;
   render: (dataItem: any) => any;
+  header?: () => JSX.Element;
+  sortValue?: (dataItem: any) => string | number;
 }
 
-interface Props {
+export interface TableProps {
   data: any[];
   config: TableConfig[];
   keyFn: (rowData: any) => string;
 }
 
-const Table = ({ data, config, keyFn }: Props) => {
-  const renderedHeaders = config.map((column) => (
-    <th key={column.label}>{column.label}</th>
-  ));
+const Table = ({ data, config, keyFn }: TableProps) => {
+  const renderedHeaders = config.map((column) => {
+    if (column.header)
+      return <Fragment key={column.label}>{column.header()}</Fragment>;
+    return <th key={column.label}>{column.label}</th>;
+  });
 
   const renderedRows = data.map((rowData: any) => {
     const renderedCells = config.map((column) => (
