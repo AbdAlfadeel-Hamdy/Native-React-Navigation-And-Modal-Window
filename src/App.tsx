@@ -5,6 +5,7 @@ import About from "./pages/about";
 import HomePage from "./pages/home";
 import Portals from "./pages/portals";
 import TablePage from "./pages/TablePage";
+import CounterPage from "./pages/CounterPage";
 
 const App = () => {
   const { href } = useContext(NavigationContext);
@@ -17,6 +18,7 @@ const App = () => {
         {href === "/about" && <About />}
         {href === "/portals" && <Portals />}
         {href === "/table" && <TablePage />}
+        {href === "/counter" && <CounterPage initialCounter={6} />}
       </div>
     </div>
   );
