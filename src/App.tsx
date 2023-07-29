@@ -11,7 +11,7 @@ const App = () => {
   const { href } = useContext(NavigationContext);
 
   return (
-    <div>
+    <div className="p-4">
       <Nav />
       <div>
         {href === "/" && <HomePage />}
